@@ -1,0 +1,127 @@
+.catalog
+	text-align: center
+	margin-bottom: 79px
+	&__items
+		display: none
+		grid-template: 442px / repeat(3, 303px)
+		grid-auto-rows: 442px
+		gap: 19px 18px
+		transition: 0.5s all
+		&.active
+			display: grid
+	&__item
+		border: 2px solid #E8E8E8
+		padding: 20px
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+		hr 
+			width: 100%
+			height: 2px
+			background-color: #E8E8E8
+			border: none
+			margin: 17px 0px
+		&-title
+			font-weight: 700
+			font-size: 16px
+			line-height: 25px
+			color: #0D0D0D
+		&-text, &-list ul
+			font-weight: 300
+			font-size: 14px
+			line-height: 22px
+			color: #0D0D0D
+		&-more, &-back
+			font-weight: 500
+			font-size: 14px
+			line-height: 14px
+			color: $main-color
+			text-transform: uppercase
+			text-decoration: underline
+			cursor: pointer
+		&-top
+			height: 100%
+			position: relative
+			display: flex
+			flex-direction: column
+			justify-content: space-between
+			overflow: hidden
+		&-bot 
+			display: flex
+			justify-content: space-between
+			align-items: flex-end
+		&-list
+			top: 100%
+			left: 0
+			height: 100%
+			padding-left: 12px
+			position: absolute
+			background-color: white
+			display: flex
+			flex-direction: column
+			justify-content: space-between
+			transition: 0.5s all
+			&.active
+				top: 0
+			ul 
+				text-align: left
+				list-style-type: none
+				color: #555555
+				li 
+					position: relative
+					&:not(:last-child)
+						margin-bottom: 5px
+					&:before 
+						content: ''
+						position: absolute
+						width: 5px
+						height: 5px
+						background-color: $main-color
+						top: 7px
+						left: -11px
+		&-price
+			font-weight: 700
+			font-size: 20px
+			line-height: 20px
+			text-align: left
+			color: #050505
+			display: flex
+			flex-direction: column
+			span 
+				font-weight: 300
+				font-size: 14px
+				line-height: 14px
+				text-decoration-line: line-through
+				color: #555555
+	&__nav
+		margin: 46px 0px 57px 0px
+		display: flex
+		justify-content: center
+		&-button
+			cursor: pointer
+			width: 222px
+			display: flex 
+			justify-content: center
+			align-items: center
+			font-weight: 400
+			font-size: 18px
+			line-height: 18px
+			transform: skewX(-23deg)
+			text-transform: uppercase
+			color: #6B6B6B
+			height: 52px
+			background-color: rgba(0, 0, 0, 0.0001)
+			border: 2px solid #D0D0D0
+			transition: 0.5s all
+			&:hover 
+				box-shadow: 0px 0px 10px $main-color
+			&.active
+				background-color: $main-color
+				color: white
+				cursor: default
+				border: none
+				box-shadow: none
+			&:not(:last-child) 
+				margin-right: 10px
+			span 
+				transform: skewX(23deg)
