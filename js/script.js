@@ -6,6 +6,24 @@ window.addEventListener('DOMContentLoaded', () => {
 		obj[i].classList.add('active');
 	}
 
+	function addModal(parent, subject, undersubj, buttonText) {
+		const newModal = document.createElement('div');
+		newModal.classList.add('modal')
+
+		newModal.innerHTML = `
+			<div class="modal__subject">${subject}</div>
+			<div class="modal__undersubj">${undersubj}</div>
+			<form action="" class="form">
+				<input type="text" name="name" placeholder="Ваше имя">
+				<input type="tel" name="phone" placeholder="Ваш телефон">
+				<input type="email" name="email" placeholder="Ваш E-mail">
+				<button class="button button_big">${buttonText}</button>
+			</form>
+		`;
+
+		parent.append(newModal);
+	}
+
 	//slider
 	const slides = document.querySelectorAll('.slider__slide'),
 		  page = document.querySelector('.slider__page'),
@@ -73,7 +91,7 @@ window.addEventListener('DOMContentLoaded', () => {
 					<div class="catalog__item-price">
 						<span>${this.price} руб.</span>${this.offPrice} руб.
 					</div>
-					<button class="button button_small">купить</button>
+					<button data-modalBuyOpen class="button button_small">купить</button>
 				</div>
 			`;
 
@@ -138,4 +156,33 @@ window.addEventListener('DOMContentLoaded', () => {
 			list[i].classList.remove('active');
 		});
 	});
+
+	//modal
+	const modalsWindow = document.querySelector('.modals'),
+		  modalConsOpen = document.querySelectorAll('[data-modalConsOpen]'),
+		  body = document.querySelector('body');
+	modalConsOpen.forEach(item => {
+		item.addEventListener('click', () => {
+			modalsWindow.classList.add('active');
+			addModal(modalsWindow, 'Просто заполните форму заявки', 'и мы перезвоним вам в течении 10 минут', 'заказать кОНСУЛЬТАЦИЮ');
+			body.style.overflow = 'hidden';
+		});
+	});
+
+	modalsWindow.addEventListener('click', (e) => {
+		if (e.target === modalsWindow) {
+			modalsWindow.innerHTML = '';
+			modalsWindow.classList.remove('active');
+			body.style.overflow = 'unset';
+		}
+	});
+
+	window.addEventListener('click', (e) => {
+		if (e.target.getAttribute('data-modalBuyOpen') == '') {
+			modalsWindow.classList.add('active');
+			addModal(modalsWindow, 'Ваш заказ:', 'Пульсометр Polar FT1', 'купить');
+			body.style.overflow = 'hidden';
+		}
+	}); 
+
 });

@@ -1,0 +1,52 @@
+.modals
+	position: fixed
+	background-color: rgba(0, 0, 0, 0.4)
+	width: 100%
+	min-height: 100%
+	top: 0
+	display: none
+	transition: 0.5s all
+	&.active
+		display: block
+	.modal 
+		width: 382px
+		height: 402px
+		background-color: #F2F2F2
+		padding: 34px 25px 39px
+		display: flex
+		flex-direction: column
+		align-items: center
+		position: absolute
+		left: 50%
+		top: 100px
+		transform: translateX(-50%)
+		&__subject
+			font-weight: 700
+			font-size: 19px
+			line-height: 19px
+			color: #0D0D0D
+		&__undersubj
+			font-weight: 700
+			font-size: 14px
+			line-height: 14px
+			color: #0D0D0D
+			margin: 10px 0px 26px 0px
+		&__close
+			cursor: pointer
+			width: 21px
+			height: 21px
+			position: absolute
+			top: 10px
+			right: -38px
+			span
+				position: absolute
+				height: 4px
+				width: 30px
+				top: 0
+				background-color: $main-color
+				&:nth-child(1)
+					transform: rotate(45deg)
+				&:nth-child(2)
+					transform: rotate(-45deg)
+body
+	position: relative
