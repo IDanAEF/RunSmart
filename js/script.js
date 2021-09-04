@@ -185,4 +185,19 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 	}); 
 
+	//up-arrow
+	const upArrow = document.querySelector('.up-arrow');
+
+	window.addEventListener('scroll', () => {
+		if (window.pageYOffset >= 2000) {
+			upArrow.classList.add('active');
+		} else {
+			upArrow.classList.remove('active');
+		}
+	});
+
+	upArrow.addEventListener('click', () => {
+		window.scrollTo(0, 0);
+	});
+
 });
